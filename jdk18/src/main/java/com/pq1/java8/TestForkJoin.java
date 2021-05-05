@@ -1,5 +1,6 @@
 package com.pq1.java8;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.stream.LongStream;
@@ -9,13 +10,17 @@ import org.junit.Test;
 public class TestForkJoin {
 	
 	@Test
-	public void test1(){
+	public void test1() throws ExecutionException, InterruptedException {
 		long start = System.currentTimeMillis();
 		
 		ForkJoinPool pool = new ForkJoinPool();
 		ForkJoinTask<Long> task = new ForkJoinCalculate(0L, 10000000000L);
 		
 		long sum = pool.invoke(task);
+		ForkJoinTask<Long> submit = pool.submit(task);
+		Long rawResult = submit.getRawResult();
+		submit.get();
+		System.out.println("rawResult:"+rawResult);
 		System.out.println(sum);
 		
 		long end = System.currentTimeMillis();
