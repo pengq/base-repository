@@ -2,7 +2,7 @@ package com.pq1.java8;
 
 import java.util.Optional;
 
-import com.pq.java8.Employee;
+
 import org.junit.Test;
 
 /*
@@ -20,9 +20,9 @@ public class TestOptional {
 	
 	@Test
 	public void test4(){
-		Optional<com.pq.java8.Employee> op = Optional.of(new com.pq.java8.Employee(101, "张三", 18, 9999.99));
+		Optional<Employee> op = Optional.of(new Employee(101, "张三", 18, 9999.99));
 		
-		Optional<String> op2 = op.map(com.pq.java8.Employee::getName);
+		Optional<String> op2 = op.map(Employee::getName);
 		System.out.println(op2.get());
 		
 		Optional<String> op3 = op.flatMap((e) -> Optional.of(e.getName()));
@@ -31,33 +31,35 @@ public class TestOptional {
 	
 	@Test
 	public void test3(){
-		Optional<com.pq.java8.Employee> op = Optional.ofNullable(new com.pq.java8.Employee());
+		Optional<Employee> op = Optional.ofNullable(new Employee());
 		
 		if(op.isPresent()){
 			System.out.println(op.get());
 		}
-		
-		com.pq.java8.Employee emp = op.orElse(new com.pq.java8.Employee("张三"));
+		Employee emp = op.orElse(new Employee("张三"));
 		System.out.println(emp);
 		
-		com.pq.java8.Employee emp2 = op.orElseGet(() -> new com.pq.java8.Employee());
+		Employee emp2 = op.orElseGet(() -> new Employee());
 		System.out.println(emp2);
 	}
 	
 	@Test
 	public void test2(){
-		/*Optional<Employee> op = Optional.ofNullable(null);
-		System.out.println(op.get());*/
+		Optional<Employee> op = Optional.ofNullable(null);
+		System.out.println(op.get());
 		
-//		Optional<Employee> op = Optional.empty();
-//		System.out.println(op.get());
+		/*Optional<Employee> op1 = Optional.empty();
+		System.out.println(op1.get());*/
 	}
 
 	@Test
 	public void test1(){
-		Optional<com.pq.java8.Employee> op = Optional.of(new com.pq.java8.Employee());
+		Optional<Employee> op = Optional.of(new Employee());
 		Employee emp = op.get();
 		System.out.println(emp);
+		Optional<Employee> op1 = Optional.of(null);
+		Employee emp1 = op1.get();
+		System.out.println(emp1);
 	}
 	
 	@Test
