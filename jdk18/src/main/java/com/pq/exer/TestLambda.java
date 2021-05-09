@@ -27,6 +27,7 @@ public class TestLambda {
 
 		for (Employee emp : emps) {
 			System.out.println(emp);
+			continue;
 		}
 	}
 
@@ -52,6 +53,7 @@ public class TestLambda {
 		op(100L, 200L, (x, y) -> x + y);
 
 		op(100L, 200L, (x, y) -> x * y);
+
 	}
 
 	//需求：对于两个 Long 型数据进行处理
