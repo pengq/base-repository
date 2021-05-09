@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 
 public class TestAnnotations {
 	@Test
-	public static void test() throws Exception {
+	public  void test() throws Exception {
 		Class<TestAnnotations> testAnnotationsClass = TestAnnotations.class;
-		Method show = testAnnotationsClass.getMethod("show");
+		Method show = testAnnotationsClass.getMethod("show",String.class);
 		myAnnotation[] annotationsByType = show.getAnnotationsByType(myAnnotation.class);
 		for (myAnnotation myAnnotation : annotationsByType) {
 			System.out.println(myAnnotation);
@@ -18,6 +18,5 @@ public class TestAnnotations {
 	@myAnnotation("111")
 	@myAnnotation("222")
 	public void show(String str){
-
 	}
 }

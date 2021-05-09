@@ -12,6 +12,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 import java.util.Set;
 
 import org.junit.Test;
@@ -38,15 +39,14 @@ public class TestLocalDateTime {
 	//5. DateTimeFormatter : 解析和格式化日期或时间
 	@Test
 	public void test5(){
-//		DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
-		
+		DateTimeFormatter dtf1 = DateTimeFormatter.ISO_LOCAL_DATE;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss E");
-		
+
+
 		LocalDateTime ldt = LocalDateTime.now();
 		String strDate = ldt.format(dtf);
-		
+		System.out.println(ldt);
 		System.out.println(strDate);
-		
 		LocalDateTime newLdt = ldt.parse(strDate, dtf);
 		System.out.println(newLdt);
 	}
@@ -114,15 +114,16 @@ public class TestLocalDateTime {
 	@Test
 	public void test2(){
 		Instant ins = Instant.now();  //默认使用 UTC 时区
-		System.out.println(ins);
+		System.out.println("ins:"+ins);
 		
 		OffsetDateTime odt = ins.atOffset(ZoneOffset.ofHours(8));
 		System.out.println(odt);
-		
-		System.out.println(ins.getNano());
+		System.out.println("odt.toEpochSecond():"+odt.toEpochSecond());
+		System.out.println("ins.toEpochMilli():"+ins.toEpochMilli());
+		System.out.println("ins.getNano():"+ins.getNano());
 		
 		Instant ins2 = Instant.ofEpochSecond(5);
-		System.out.println(ins2);
+		System.out.println("ins2:"+ins2);
 	}
 	
 	//1. LocalDate、LocalTime、LocalDateTime
@@ -131,7 +132,7 @@ public class TestLocalDateTime {
 		LocalDateTime ldt = LocalDateTime.now();
 		System.out.println(ldt);
 		
-		LocalDateTime ld2 = LocalDateTime.of(2016, 11, 21, 10, 10, 10);
+		LocalDateTime ld2 = LocalDateTime.of(2020, 10, 10, 10, 10, 10);
 		System.out.println(ld2);
 		
 		LocalDateTime ldt3 = ld2.plusYears(20);
