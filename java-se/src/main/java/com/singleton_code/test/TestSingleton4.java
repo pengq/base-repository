@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 public class TestSingleton4 {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-/*		Singleton4 s1 = Singleton4.getInstance();
+		/*Singleton4 s1 = Singleton4.getInstance();
 		Singleton4 s2 = Singleton4.getInstance();
 	
 		System.out.println(s1 == s2);
@@ -32,12 +32,12 @@ public class TestSingleton4 {
 		Future<Singleton4> f1 = es.submit(c);
 		Future<Singleton4> f2 = es.submit(c);
 		
-		Singleton4 s1 = f1.get();
-		Singleton4 s2 = f2.get();
+		Singleton4 s11 = f1.get();
+		Singleton4 s22 = f2.get();
 		
-		System.out.println(s1 == s2);
-		System.out.println(s1);
-		System.out.println(s2);
+		System.out.println(s11 == s22);
+		System.out.println(s11);
+		System.out.println(s22);
 		
 		es.shutdown();
 		

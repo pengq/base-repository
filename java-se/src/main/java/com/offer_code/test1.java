@@ -1,4 +1,4 @@
-package com;
+package com.offer_code;
 
 import org.junit.Test;
 

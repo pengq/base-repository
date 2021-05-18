@@ -18,7 +18,7 @@ package com.init_code;
  * 这里i=test()执行的是子类重写的test()方法
  */
 public class Father{
-	private int i = test();
+
 	private static int j = method();
 	
 	static{
@@ -30,8 +30,8 @@ public class Father{
 	{
 		System.out.print("(3)");
 	}
-	
-	
+
+	private int i = test();
 	public int test(){
 		System.out.print("(4)");
 		return 1;
