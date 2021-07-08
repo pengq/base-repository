@@ -1,2 +1,7 @@
 https://zhuanlan.zhihu.com/p/57689422
 https://segmentfault.com/a/1190000016696343
+Eureka服务注册与发现
+Ribbon负载均衡
+Feign负载均衡
+Hystrix断路器
+zuul路由网关
