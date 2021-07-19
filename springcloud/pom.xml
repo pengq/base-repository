@@ -16,6 +16,10 @@
         <module>scloud-eureka-server7001</module>
         <module>scloud-eureka-server7002</module>
         <module>scloud-provider-payment8002</module>
+        <module>scloud-providerZK-payment8004</module>
+        <module>scloud-consumerzk-order80</module>
+        <module>scloud-provider-consul-payment8006</module>
+        <module>scloud-consumer-consul-order80</module>
     </modules>
     <!-- 统一管理jar包版本 -->
     <properties>
