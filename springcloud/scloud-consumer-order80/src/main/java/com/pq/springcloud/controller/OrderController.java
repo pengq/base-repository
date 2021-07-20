@@ -3,6 +3,8 @@ package com.pq.springcloud.controller;
 import com.pq.springcloud.entities.CommonResult;
 import com.pq.springcloud.entities.Payment;
 import com.pq.springcloud.lb.LoadBalancer;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -17,6 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class OrderController {
 
 	//public static final String PaymentSrv_URL = "http://localhost:8001";
@@ -55,7 +58,7 @@ public class OrderController {
 	}
 
 	@GetMapping("/consumer/payment/lb")
-	public String getPaymentLB() {
+	public CommonResult getPaymentLB() {
 		List<ServiceInstance> instances = discoveryClient.getInstances("SCLOUD-PAYMENT-SERVICE");
 
 		if (instances == null || instances.size() <= 0) {
@@ -63,7 +66,8 @@ public class OrderController {
 		}
 		ServiceInstance serviceInstance = loadBalancer.instances(instances);
 		URI uri = serviceInstance.getUri();
+		log.info(uri.toString());
 
-		return restTemplate.getForObject(uri + "/payment/lb", String.class);
+		return restTemplate.getForObject(uri + "/payment/get/1", CommonResult.class);
 	}
 }
