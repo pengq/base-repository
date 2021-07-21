@@ -22,6 +22,8 @@
         <module>scloud-consumer-consul-order80</module>
         <module>scloud-consumer-feign-order80</module>
         <module>scloud-provider-hystrix-payment8001</module>
+        <module>scloud-consumer-feign-hystrix-order80</module>
+        <module>scloud-consumer-hystrix-dashboard9001</module>
     </modules>
     <!-- 统一管理jar包版本 -->
     <properties>
