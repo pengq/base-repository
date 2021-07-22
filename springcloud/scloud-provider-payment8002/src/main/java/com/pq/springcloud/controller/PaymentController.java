@@ -16,6 +16,12 @@ public class PaymentController {
 	private PaymentService paymentService;
 	@Value("${server.port}")
 	private String serverPort;
+
+	@GetMapping(value = "/payment/lb")
+	public String lb() {
+		return serverPort;
+	}
+
 	@PostMapping(value = "/payment/create")
 	public CommonResult create(@RequestBody Payment payment) {
 		log.info("payment {}", payment);
@@ -34,7 +40,7 @@ public class PaymentController {
 		Payment payment = paymentService.getPaymentById(id);
 		log.info("*****查询结果:{}", payment);
 		if (payment != null) {
-			return new CommonResult(200, "查询成功"+"\t 服务端口："+serverPort, payment);
+			return new CommonResult(200, "查询成功" + "\t 服务端口：" + serverPort, payment);
 		} else {
 			return new CommonResult(444, "没有对应记录,查询ID: " + id, null);
 		}
